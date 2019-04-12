@@ -1,5 +1,5 @@
 ___
-# Acast RSS assesment
+# RSS-parser
 
 * The code is structured as per simple Node app.
 - Tests are done in Mocha, in test/test.js
@@ -48,22 +48,3 @@ Second one takes an URL of mp3 file and retrieves ID3 tags for the file, in the 
         }
     }
 }
-___
-
-
-# Issues
-
-* In order to calculate checksum, one would need to (probably?) download the file and calculate the checksum, for example with md5, locally. This would mean, that for a given RSS, with around 200 files, 1:00:00 long each, with weight around 60MB, would result in downloading around 11GB for one API request. I assumed that would be too much, and not the right thing to do at the moment. Instead of mp3 checksum I took the episodeID to calculate the checksum out of. In order to do it properly for the media file, the file would need to be downloaded first.
-
-* The ID3 media tags retrieval may take some time
-___
-
-# What could be improved
-
-* Extended express routing, with proper routing on /rss | /id3, that would be stored in configuration file, which would then be easier to maintain, and expand
-
-* Export data retrieval into another files and the export their functions and import them in general server.js file. As server should only have server-related functions and code, while functionalities should be placed outside.
-
-* More tests on retrieved data could be performed.
-
-* More detailed messages could be send to user in case of API errros.
